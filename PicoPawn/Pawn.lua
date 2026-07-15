@@ -178,6 +178,20 @@ function PawnInitialize()
 	hooksecurefunc(GameTooltip, "SetTradeTargetItem", function(self, ...) PawnUpdateTooltip("GameTooltip", "SetTradeTargetItem", ...) end)
 	hooksecurefunc(GameTooltip, "SetTrainerService", function(self, ...) PawnUpdateTooltip("GameTooltip", "SetTrainerService", ...) end)
 	hooksecurefunc(GameTooltip, "Hide", function(self, ...) PawnLastHoveredItem = nil end)
+
+	-- Ascension item-scaling compatibility: the server can rebuild the hovered item's tooltip
+	-- (adding its "Scaled item stats" note) AFTER Pawn annotates it, which wipes Pawn's lines.
+	-- Re-apply once whenever the tooltip's item is (re)set.  PawnUpdateTooltip marks GameTooltip
+	-- with .PawnAnnotated (reset on OnTooltipCleared) so we annotate exactly once per rebuild.
+	if GameTooltip.HookScript then
+		GameTooltip:HookScript("OnTooltipCleared", function(self) self.PawnAnnotated = nil end)
+		GameTooltip:HookScript("OnTooltipSetItem", function(self)
+			if self.PawnAnnotated then return end
+			if not PicoPawnCommon or not PicoPawnCommon.Scales then return end
+			local _, ItemLink = self:GetItem()
+			if ItemLink and ItemLink ~= "" then PawnUpdateTooltip("GameTooltip", "SetHyperlink", ItemLink) end
+		end)
+	end
 	
 	-- The item link tooltip (only hook it if it's an actual item)
 	hooksecurefunc(ItemRefTooltip, "SetHyperlink",
@@ -990,6 +1004,13 @@ function PawnUpdateTooltip(TooltipName, MethodName, Param1, ...)
 	if not Tooltip then
 		VgerCore.Fail("Where'd the tooltip go?  I seem to have misplaced it.")
 		return
+	end
+
+	-- Only annotate the main tooltip once per display; the OnTooltipSetItem hook re-applies
+	-- after the tooltip is cleared and rebuilt (e.g. Ascension item scaling).
+	if TooltipName == "GameTooltip" then
+		if Tooltip.PawnAnnotated then return end
+		Tooltip.PawnAnnotated = true
 	end
 	
 	-- If necessary, add a blank line to the tooltip.

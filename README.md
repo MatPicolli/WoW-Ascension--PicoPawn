@@ -92,6 +92,13 @@ parse normally; any stat text Pawn doesn't recognize is listed under
 `/picopawn debug on`, which is the starting point for adding Ascension-specific stat
 support in a later pass.
 
+**Item scaling:** on realms where items scale to your level, the client rebuilds a
+hovered item's tooltip (adding its own *"Scaled item stats…"* note) after PicoPawn
+has annotated it, which would wipe PicoPawn's score/upgrade lines. PicoPawn detects
+this and re-applies its lines to the main tooltip, so scores and upgrade arrows
+survive on scaled items. The client's own *"stats do not compare correctly"* note is
+separate from PicoPawn.
+
 ## Credits
 
 - **Pawn** by **Vger** — the original addon.
