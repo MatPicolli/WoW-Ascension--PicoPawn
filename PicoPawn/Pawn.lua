@@ -280,6 +280,21 @@ function PawnInitialize()
 		LinkWrangler.RegisterCallback("Pawn", PawnLinkWranglerOnTooltip, "refreshcomp")
 	end
 
+	-- AdiBags compatibility: AdiBags replaces the default bags with its own item buttons and
+	-- never calls Blizzard's ContainerFrame_Update, so the bag upgrade-arrow overlay needs to
+	-- hook AdiBags' own message bus (AceEvent-3.0) instead.
+	if LibStub then
+		local AceEvent = LibStub:GetLibrary("AceEvent-3.0", true)
+		if AceEvent then
+			PawnAdiBagsListener = CreateFrame("Frame")
+			AceEvent:Embed(PawnAdiBagsListener)
+			PawnAdiBagsListener:RegisterMessage("AdiBags_AcquireButton", function(_, Button) PawnUI_AdiBagsButtonAcquired(Button) end)
+			PawnAdiBagsListener:RegisterMessage("AdiBags_UpdateButton", function(_, Button) PawnUI_UpdateAdiBagsButton(Button) end)
+			PawnAdiBagsListener:RegisterMessage("AdiBags_UpdateAllButtons", function() PawnUI_RefreshAllAdiBagsButtons() end)
+			PawnAdiBagsListener:RegisterMessage("AdiBags_ReleaseButton", function(_, Button) PawnUI_AdiBagsButtonReleased(Button) end)
+		end
+	end
+
 end
 
 function PawnOnLogout()

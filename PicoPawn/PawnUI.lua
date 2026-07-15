@@ -114,6 +114,43 @@ function PawnUI_RefreshAllContainerUpgradeIcons()
 			ContainerFrame_Update(Frame)
 		end
 	end
+
+	PawnUI_RefreshAllAdiBagsButtons()
+end
+
+------------------------------------------------------------
+-- AdiBags compatibility
+------------------------------------------------------------
+
+-- Buttons AdiBags has handed us, keyed by the button itself (weak keys, so a button AdiBags
+-- stops using can still be garbage-collected). Tracked so a full refresh can revisit them all,
+-- since AdiBags' own "update everything" message doesn't hand us the individual buttons.
+PawnUI_AdiBagsButtons = PawnUI_AdiBagsButtons or setmetatable({}, { __mode = "k" })
+
+function PawnUI_AdiBagsButtonAcquired(Button)
+	if not Button then return end
+	PawnUI_AdiBagsButtons[Button] = true
+	PawnUI_UpdateAdiBagsButton(Button)
+end
+
+function PawnUI_AdiBagsButtonReleased(Button)
+	if Button and Button.PawnUpgradeArrow then Button.PawnUpgradeArrow:Hide() end
+end
+
+-- Updates a single AdiBags item button's upgrade arrow overlay. AdiBags' ItemButton objects are
+-- real button frames with .bag/.slot fields, so this reuses the same overlay logic as stock bags.
+function PawnUI_UpdateAdiBagsButton(Button)
+	if not Button or not Button.bag or not Button.slot then return end
+	PawnUI_UpdateContainerButtonUpgradeIcon(Button, Button.bag, Button.slot)
+end
+
+function PawnUI_RefreshAllAdiBagsButtons()
+	local Button
+	for Button in pairs(PawnUI_AdiBagsButtons) do
+		if Button:IsShown() then
+			PawnUI_UpdateAdiBagsButton(Button)
+		end
+	end
 end
 
 ------------------------------------------------------------
