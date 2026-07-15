@@ -1048,6 +1048,11 @@ function PawnUpdateTooltip(TooltipName, MethodName, Param1, ...)
 	end
 	
 	-- Show the updated tooltip.	
+	-- Show a big green upgrade-arrow badge on the main tooltip when the item is an upgrade.
+	if TooltipName == "GameTooltip" and Item.Link then
+		PawnAttachIconToTooltip(Tooltip, false, Item.Link, true)
+	end
+
 	Tooltip:Show()
 end
 
@@ -1230,6 +1235,43 @@ function PawnAddUpgradesToTooltip(Tooltip, Item)
 			end
 		end
 	end
+end
+
+-- Returns true if the item is an upgrade over the weakest thing it would replace, for any
+-- currently-visible scale.  Used for the big green upgrade-arrow badge on tooltips.
+function PawnIsItemAnUpgrade(Item)
+	if not Item or not Item.Link or not Item.Values or #Item.Values == 0 then return false end
+	local _, _, _, _, _, _, _, _, InvType = GetItemInfo(Item.Link)
+	if not InvType then return false end
+	local Slots = PawnEquipLocToSlots[InvType]
+	if not Slots then return false end
+
+	local EquippedItems = { }
+	local i
+	for i = 1, #Slots do
+		EquippedItems[Slots[i]] = PawnGetItemDataForInventorySlot(Slots[i], false, "player")
+	end
+
+	local Entry
+	for _, Entry in ipairs(Item.Values) do
+		local ScaleName, ItemValue = Entry[1], Entry[2]
+		if ItemValue and ItemValue > 0 and PawnIsScaleVisible(ScaleName) then
+			local Baseline
+			for i = 1, #Slots do
+				local Equipped = EquippedItems[Slots[i]]
+				if Equipped then
+					local EquippedValue = PawnGetSingleValueFromItem(Equipped, ScaleName)
+					if EquippedValue and EquippedValue > 0 then
+						if not Baseline or EquippedValue < Baseline then Baseline = EquippedValue end
+					end
+				end
+			end
+			if Baseline and Baseline > 0 and ItemValue > Baseline * (1 + PawnUpgradeMinPercent / 100) then
+				return true
+			end
+		end
+	end
+	return false
 end
 
 -- Returns the total scale values of all equipped items.  Only counts enchanted values.
@@ -2253,13 +2295,14 @@ end
 -- If tooltip icons are enabled, attaches an icon to the upper-left corner of a tooltip.  Otherwise, hides
 -- any icons attached to that tooltip if they exist.
 -- Optionally, the caller may include an item link so this function doesn't need to get one.
-function PawnAttachIconToTooltip(Tooltip, AttachAbove, ItemLink)
+function PawnAttachIconToTooltip(Tooltip, AttachAbove, ItemLink, OnlyIfUpgrade)
 	-- If the tooltip doesn't exist, exit now.
 	if not Tooltip then return end
 
-	-- Find the right texture to use, but skip all this if the user has icons turned off.
+	-- Find the right texture to use.  Normally this is gated on the "tooltip icons" option, but
+	-- the upgrade badge (OnlyIfUpgrade) shows regardless so upgrades are always flagged.
 	local TextureName
-	if PicoPawnCommon.ShowTooltipIcons then
+	if PicoPawnCommon.ShowTooltipIcons or OnlyIfUpgrade then
 		-- Don't retrieve an item link if one was passed in.
 		if not ItemLink then
 			_, ItemLink = Tooltip:GetItem()
@@ -2268,15 +2311,25 @@ function PawnAttachIconToTooltip(Tooltip, AttachAbove, ItemLink)
 			TextureName = GetItemIcon(ItemLink)
 		end
 	end
+
+	-- Decide whether the item is an upgrade (for the green arrow overlay and OnlyIfUpgrade tooltips).
+	local IsUpgrade = false
+	if ItemLink and PicoPawnCommon.ShowUpgrades then
+		IsUpgrade = PawnIsItemAnUpgrade(PawnGetItemData(ItemLink))
+	end
+	-- On tooltips that should only show the badge for upgrades (the main game tooltip), a
+	-- non-upgrade is treated as if there were no icon at all.
+	if OnlyIfUpgrade and not IsUpgrade then TextureName = nil end
 	
 	-- Now, if we don't have a texture to use, or icons are disabled, hide this icon if it's visible
 	-- and then exit.
 	local IconFrame = Tooltip.PawnIconFrame
 	if not TextureName then
+		-- Hide the badge but keep the frame around for reuse (avoids creating a new frame/arrow
+		-- every time a non-upgrade item is hovered on the main tooltip).
 		if IconFrame then
+			if IconFrame.PawnUpgradeArrow then IconFrame.PawnUpgradeArrow:Hide() end
 			IconFrame:Hide()
-			IconFrame.PawnIconTexture = nil
-			Tooltip.PawnIconFrame = nil
 		end
 		return
 	end
@@ -2304,7 +2357,22 @@ function PawnAttachIconToTooltip(Tooltip, AttachAbove, ItemLink)
 		IconFrame:SetPoint("TOPRIGHT", Tooltip, "TOPLEFT", 2, -2)
 	end
 	IconFrame:Show()
-	
+
+	-- Overlay (or hide) the big green upgrade arrow on the icon.
+	if not IconFrame.PawnUpgradeArrow then
+		local Arrow = IconFrame:CreateTexture(nil, "OVERLAY")
+		Arrow:SetTexture("Interface\\AddOns\\PicoPawn\\Textures\\UpgradeArrowBig")
+		Arrow:SetPoint("CENTER", IconFrame, "CENTER", 0, 0)
+		Arrow:SetWidth(34)
+		Arrow:SetHeight(34)
+		IconFrame.PawnUpgradeArrow = Arrow
+	end
+	if IsUpgrade and OnlyIfUpgrade then
+		IconFrame.PawnUpgradeArrow:Show()
+	else
+		IconFrame.PawnUpgradeArrow:Hide()
+	end
+
 	return IconFrame
 end
 

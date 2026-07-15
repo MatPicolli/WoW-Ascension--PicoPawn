@@ -50,6 +50,11 @@ scale, so a class shows one upgrade line per role at once (e.g. *Beast Mastery /
 Marksmanship / Survival* for a Hunter). Only upgrades are shown (on by default via
 the `ShowUpgrades` option); downgrades are omitted to keep tooltips clean.
 
+Upgrades are also flagged with a **big green arrow** badge on the item's icon at the
+top-left of its tooltip, so you can spot an upgrade at a glance without reading the
+lines. The badge appears only when the item is an upgrade for one of your enabled
+scales.
+
 In the PicoPawn window, the scale list's group headers (e.g. *Wowhead scales*,
 *Ascension community scales*) are **collapsible** — click a header to fold/expand
 that group; the state is remembered.
