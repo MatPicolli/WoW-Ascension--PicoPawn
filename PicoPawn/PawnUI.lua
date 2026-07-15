@@ -91,6 +91,7 @@ function PawnUI_UpdateContainerButtonUpgradeIcon(Button, BagID, SlotID)
 		if not Arrow then
 			Arrow = Button:CreateTexture(nil, "OVERLAY")
 			Arrow:SetTexture("Interface\\AddOns\\PicoPawn\\Textures\\UpgradeArrowBig")
+			Arrow:SetTexCoord(0, 0.5, 0, 1) -- left half of the atlas is the green (upgrade) arrow
 			Arrow:SetPoint("TOPLEFT", Button, "TOPLEFT", -4, 4)
 			Arrow:SetWidth(18)
 			Arrow:SetHeight(18)

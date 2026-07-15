@@ -1201,7 +1201,8 @@ local PawnEquipLocToSlots =
 
 -- The smallest upgrade percentage worth showing, to avoid rounding noise.
 local PawnUpgradeMinPercent = 0.5
-local PawnUpgradeArrowTexture = "|TInterface\\AddOns\\PicoPawn\\Textures\\UpgradeArrowBig:0|t "
+-- Crop to just the left (green) half of the UpgradeArrowBig atlas (128x64; right half is red, unused).
+local PawnUpgradeArrowTexture = "|TInterface\\AddOns\\PicoPawn\\Textures\\UpgradeArrowBig:0:0:0:0:128:64:0:64:0:64|t "
 
 -- Adds a green \"+X% upgrade\" line to a tooltip for each visible scale where the item beats
 -- the weakest thing it would replace in that slot.  Only upgrades are shown.
@@ -2373,6 +2374,7 @@ function PawnAttachIconToTooltip(Tooltip, AttachAbove, ItemLink, OnlyIfUpgrade)
 	if not IconFrame.PawnUpgradeArrow then
 		local Arrow = IconFrame:CreateTexture(nil, "OVERLAY")
 		Arrow:SetTexture("Interface\\AddOns\\PicoPawn\\Textures\\UpgradeArrowBig")
+		Arrow:SetTexCoord(0, 0.5, 0, 1) -- left half of the atlas is the green (upgrade) arrow
 		Arrow:SetPoint("CENTER", IconFrame, "CENTER", 0, 0)
 		Arrow:SetWidth(34)
 		Arrow:SetHeight(34)
