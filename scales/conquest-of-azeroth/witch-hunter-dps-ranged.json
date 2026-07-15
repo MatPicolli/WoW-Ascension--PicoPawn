@@ -1,0 +1,10 @@
+{
+  "name": "Witch Hunter DPS (Ranged)",
+  "class": "Witch Hunter",
+  "role": "DPS (Ranged)",
+  "server": "Conquest of Azeroth",
+  "version": "CoA (3.3.5a)",
+  "author": "PicoPawn (basic starter)",
+  "notes": "Basic role-template starter for Conquest of Azeroth; tune and resubmit for accurate weights.",
+  "tag": "( Pawn: v1: \"Witch Hunter DPS (Ranged)\": Agility=100, HitRating=80, CritRating=65, HasteRating=58, ArmorPenetration=50, Ap=45, Intellect=3, Stamina=0.1, GemQualityLevel=4 )"
+}

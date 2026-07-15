@@ -1,0 +1,10 @@
+{
+  "name": "Primalist Healer",
+  "class": "Primalist",
+  "role": "Healer",
+  "server": "Conquest of Azeroth",
+  "version": "CoA (3.3.5a)",
+  "author": "PicoPawn (basic starter)",
+  "notes": "Basic role-template starter for Conquest of Azeroth; tune and resubmit for accurate weights.",
+  "tag": "( Pawn: v1: \"Primalist Healer\": SpellPower=100, Spirit=75, HasteRating=65, Intellect=60, Mp5=50, CritRating=45, Stamina=0.1, GemQualityLevel=4 )"
+}

@@ -40,6 +40,20 @@ Naming convention for files: `<server>-<class>-<role>.json` (lowercase,
 hyphenated), e.g. `bronzebeard-hunter-bm.json`. Files starting with `example-`
 are starter placeholders and can be replaced by real community data.
 
+The generator scans this folder **recursively**, so scales can be grouped in
+subfolders by realm/expansion, e.g. `scales/conquest-of-azeroth/`.
+
+## Conquest of Azeroth starter set
+
+`scales/conquest-of-azeroth/` holds basic role-template scales for all 21 CoA
+classes (one per role). CoA has no published per-spec weights, so these are
+generic starting points — the primary stat weighted highest plus role-appropriate
+secondaries — meant to be refined by the community. They're produced by
+`tools/coa_starter_scales.py` (edit the `CLASSES` table there to fix a class's
+roles or damage type, then re-run it and the main generator). Because CoA classes
+don't map to a standard WotLK class token, none auto-enable — players pick the
+ones they want in the PicoPawn window.
+
 ## Maintainer workflow (accepting a submission)
 
 1. Review the submission issue. Sanity-check the tag (starts with `( Pawn: v1:`).

@@ -12,6 +12,582 @@ local ScaleProviderName = "Ascension"
 
 function PawnAscensionScaleProvider_AddScales()
 
+	-- Barbarian DPS (Melee) (Barbarian, DPS (Melee)) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothBarbarianDpsMeleeBarbarianDpsMelee",
+		"[Conquest of Azeroth] Barbarian - DPS (Melee)",
+		"1eff00",
+		{
+			["Agility"] = 35, ["Ap"] = 45, ["ArmorPenetration"] = 55, ["CritRating"] = 65, ["ExpertiseRating"] = 75, ["HasteRating"] = 60, ["HitRating"] = 80, ["Stamina"] = 0.1, ["Strength"] = 100
+		},
+		1
+	)
+
+	-- Barbarian Tank (Barbarian, Tank) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothBarbarianTankBarbarianTank",
+		"[Conquest of Azeroth] Barbarian - Tank",
+		"1eff00",
+		{
+			["Agility"] = 45, ["Ap"] = 10, ["Armor"] = 45, ["BlockValue"] = 35, ["DefenseRating"] = 85, ["DodgeRating"] = 85, ["ExpertiseRating"] = 35, ["HitRating"] = 25, ["ParryRating"] = 80, ["Stamina"] = 100, ["Strength"] = 45
+		},
+		1
+	)
+
+	-- Bloodmage DPS (Caster) (Bloodmage, DPS (Caster)) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothBloodmageDpsCasterBloodmageDpsCaster",
+		"[Conquest of Azeroth] Bloodmage - DPS (Caster)",
+		"1eff00",
+		{
+			["CritRating"] = 60, ["HasteRating"] = 70, ["HitRating"] = 80, ["Intellect"] = 35, ["SpellPower"] = 100, ["Spirit"] = 3, ["Stamina"] = 0.1
+		},
+		1
+	)
+
+	-- Bloodmage Healer (Bloodmage, Healer) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothBloodmageHealerBloodmageHealer",
+		"[Conquest of Azeroth] Bloodmage - Healer",
+		"1eff00",
+		{
+			["CritRating"] = 45, ["HasteRating"] = 65, ["Intellect"] = 60, ["Mp5"] = 50, ["SpellPower"] = 100, ["Spirit"] = 75, ["Stamina"] = 0.1
+		},
+		1
+	)
+
+	-- Bloodmage Tank (Bloodmage, Tank) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothBloodmageTankBloodmageTank",
+		"[Conquest of Azeroth] Bloodmage - Tank",
+		"1eff00",
+		{
+			["Agility"] = 45, ["Ap"] = 10, ["Armor"] = 45, ["BlockValue"] = 35, ["DefenseRating"] = 85, ["DodgeRating"] = 85, ["ExpertiseRating"] = 35, ["HitRating"] = 25, ["ParryRating"] = 80, ["Stamina"] = 100, ["Strength"] = 45
+		},
+		1
+	)
+
+	-- Chronomancer DPS (Caster) (Chronomancer, DPS (Caster)) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothChronomancerDpsCasterChronomancerDpsCaster",
+		"[Conquest of Azeroth] Chronomancer - DPS (Caster)",
+		"1eff00",
+		{
+			["CritRating"] = 60, ["HasteRating"] = 70, ["HitRating"] = 80, ["Intellect"] = 35, ["SpellPower"] = 100, ["Spirit"] = 3, ["Stamina"] = 0.1
+		},
+		1
+	)
+
+	-- Chronomancer Healer (Chronomancer, Healer) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothChronomancerHealerChronomancerHealer",
+		"[Conquest of Azeroth] Chronomancer - Healer",
+		"1eff00",
+		{
+			["CritRating"] = 45, ["HasteRating"] = 65, ["Intellect"] = 60, ["Mp5"] = 50, ["SpellPower"] = 100, ["Spirit"] = 75, ["Stamina"] = 0.1
+		},
+		1
+	)
+
+	-- Cultist DPS (Caster) (Cultist, DPS (Caster)) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothCultistDpsCasterCultistDpsCaster",
+		"[Conquest of Azeroth] Cultist - DPS (Caster)",
+		"1eff00",
+		{
+			["CritRating"] = 60, ["HasteRating"] = 70, ["HitRating"] = 80, ["Intellect"] = 35, ["SpellPower"] = 100, ["Spirit"] = 3, ["Stamina"] = 0.1
+		},
+		1
+	)
+
+	-- Cultist Healer (Cultist, Healer) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothCultistHealerCultistHealer",
+		"[Conquest of Azeroth] Cultist - Healer",
+		"1eff00",
+		{
+			["CritRating"] = 45, ["HasteRating"] = 65, ["Intellect"] = 60, ["Mp5"] = 50, ["SpellPower"] = 100, ["Spirit"] = 75, ["Stamina"] = 0.1
+		},
+		1
+	)
+
+	-- Cultist Tank (Cultist, Tank) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothCultistTankCultistTank",
+		"[Conquest of Azeroth] Cultist - Tank",
+		"1eff00",
+		{
+			["Agility"] = 45, ["Ap"] = 10, ["Armor"] = 45, ["BlockValue"] = 35, ["DefenseRating"] = 85, ["DodgeRating"] = 85, ["ExpertiseRating"] = 35, ["HitRating"] = 25, ["ParryRating"] = 80, ["Stamina"] = 100, ["Strength"] = 45
+		},
+		1
+	)
+
+	-- Felsworn DPS (Caster) (Felsworn, DPS (Caster)) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothFelswornDpsCasterFelswornDpsCaster",
+		"[Conquest of Azeroth] Felsworn - DPS (Caster)",
+		"1eff00",
+		{
+			["CritRating"] = 60, ["HasteRating"] = 70, ["HitRating"] = 80, ["Intellect"] = 35, ["SpellPower"] = 100, ["Spirit"] = 3, ["Stamina"] = 0.1
+		},
+		1
+	)
+
+	-- Felsworn DPS (Melee) (Felsworn, DPS (Melee)) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothFelswornDpsMeleeFelswornDpsMelee",
+		"[Conquest of Azeroth] Felsworn - DPS (Melee)",
+		"1eff00",
+		{
+			["Agility"] = 35, ["Ap"] = 45, ["ArmorPenetration"] = 55, ["CritRating"] = 65, ["ExpertiseRating"] = 75, ["HasteRating"] = 60, ["HitRating"] = 80, ["Stamina"] = 0.1, ["Strength"] = 100
+		},
+		1
+	)
+
+	-- Felsworn Tank (Felsworn, Tank) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothFelswornTankFelswornTank",
+		"[Conquest of Azeroth] Felsworn - Tank",
+		"1eff00",
+		{
+			["Agility"] = 45, ["Ap"] = 10, ["Armor"] = 45, ["BlockValue"] = 35, ["DefenseRating"] = 85, ["DodgeRating"] = 85, ["ExpertiseRating"] = 35, ["HitRating"] = 25, ["ParryRating"] = 80, ["Stamina"] = 100, ["Strength"] = 45
+		},
+		1
+	)
+
+	-- Guardian DPS (Melee) (Guardian, DPS (Melee)) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothGuardianDpsMeleeGuardianDpsMelee",
+		"[Conquest of Azeroth] Guardian - DPS (Melee)",
+		"1eff00",
+		{
+			["Agility"] = 35, ["Ap"] = 45, ["ArmorPenetration"] = 55, ["CritRating"] = 65, ["ExpertiseRating"] = 75, ["HasteRating"] = 60, ["HitRating"] = 80, ["Stamina"] = 0.1, ["Strength"] = 100
+		},
+		1
+	)
+
+	-- Guardian Tank (Guardian, Tank) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothGuardianTankGuardianTank",
+		"[Conquest of Azeroth] Guardian - Tank",
+		"1eff00",
+		{
+			["Agility"] = 45, ["Ap"] = 10, ["Armor"] = 45, ["BlockValue"] = 35, ["DefenseRating"] = 85, ["DodgeRating"] = 85, ["ExpertiseRating"] = 35, ["HitRating"] = 25, ["ParryRating"] = 80, ["Stamina"] = 100, ["Strength"] = 45
+		},
+		1
+	)
+
+	-- Knight of Xoroth DPS (Melee) (Knight of Xoroth, DPS (Melee)) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothKnightOfXorothDpsMeleeKnightOfXorothDpsMelee",
+		"[Conquest of Azeroth] Knight of Xoroth - DPS (Melee)",
+		"1eff00",
+		{
+			["Agility"] = 35, ["Ap"] = 45, ["ArmorPenetration"] = 55, ["CritRating"] = 65, ["ExpertiseRating"] = 75, ["HasteRating"] = 60, ["HitRating"] = 80, ["Stamina"] = 0.1, ["Strength"] = 100
+		},
+		1
+	)
+
+	-- Knight of Xoroth Tank (Knight of Xoroth, Tank) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothKnightOfXorothTankKnightOfXorothTank",
+		"[Conquest of Azeroth] Knight of Xoroth - Tank",
+		"1eff00",
+		{
+			["Agility"] = 45, ["Ap"] = 10, ["Armor"] = 45, ["BlockValue"] = 35, ["DefenseRating"] = 85, ["DodgeRating"] = 85, ["ExpertiseRating"] = 35, ["HitRating"] = 25, ["ParryRating"] = 80, ["Stamina"] = 100, ["Strength"] = 45
+		},
+		1
+	)
+
+	-- Necromancer DPS (Caster) (Necromancer, DPS (Caster)) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothNecromancerDpsCasterNecromancerDpsCaster",
+		"[Conquest of Azeroth] Necromancer - DPS (Caster)",
+		"1eff00",
+		{
+			["CritRating"] = 60, ["HasteRating"] = 70, ["HitRating"] = 80, ["Intellect"] = 35, ["SpellPower"] = 100, ["Spirit"] = 3, ["Stamina"] = 0.1
+		},
+		1
+	)
+
+	-- Primalist DPS (Melee) (Primalist, DPS (Melee)) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothPrimalistDpsMeleePrimalistDpsMelee",
+		"[Conquest of Azeroth] Primalist - DPS (Melee)",
+		"1eff00",
+		{
+			["Agility"] = 35, ["Ap"] = 45, ["ArmorPenetration"] = 55, ["CritRating"] = 65, ["ExpertiseRating"] = 75, ["HasteRating"] = 60, ["HitRating"] = 80, ["Stamina"] = 0.1, ["Strength"] = 100
+		},
+		1
+	)
+
+	-- Primalist Healer (Primalist, Healer) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothPrimalistHealerPrimalistHealer",
+		"[Conquest of Azeroth] Primalist - Healer",
+		"1eff00",
+		{
+			["CritRating"] = 45, ["HasteRating"] = 65, ["Intellect"] = 60, ["Mp5"] = 50, ["SpellPower"] = 100, ["Spirit"] = 75, ["Stamina"] = 0.1
+		},
+		1
+	)
+
+	-- Primalist Tank (Primalist, Tank) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothPrimalistTankPrimalistTank",
+		"[Conquest of Azeroth] Primalist - Tank",
+		"1eff00",
+		{
+			["Agility"] = 45, ["Ap"] = 10, ["Armor"] = 45, ["BlockValue"] = 35, ["DefenseRating"] = 85, ["DodgeRating"] = 85, ["ExpertiseRating"] = 35, ["HitRating"] = 25, ["ParryRating"] = 80, ["Stamina"] = 100, ["Strength"] = 45
+		},
+		1
+	)
+
+	-- Pyromancer DPS (Caster) (Pyromancer, DPS (Caster)) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothPyromancerDpsCasterPyromancerDpsCaster",
+		"[Conquest of Azeroth] Pyromancer - DPS (Caster)",
+		"1eff00",
+		{
+			["CritRating"] = 60, ["HasteRating"] = 70, ["HitRating"] = 80, ["Intellect"] = 35, ["SpellPower"] = 100, ["Spirit"] = 3, ["Stamina"] = 0.1
+		},
+		1
+	)
+
+	-- Pyromancer Healer (Pyromancer, Healer) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothPyromancerHealerPyromancerHealer",
+		"[Conquest of Azeroth] Pyromancer - Healer",
+		"1eff00",
+		{
+			["CritRating"] = 45, ["HasteRating"] = 65, ["Intellect"] = 60, ["Mp5"] = 50, ["SpellPower"] = 100, ["Spirit"] = 75, ["Stamina"] = 0.1
+		},
+		1
+	)
+
+	-- Ranger DPS (Melee) (Ranger, DPS (Melee)) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothRangerDpsMeleeRangerDpsMelee",
+		"[Conquest of Azeroth] Ranger - DPS (Melee)",
+		"1eff00",
+		{
+			["Agility"] = 100, ["Ap"] = 45, ["ArmorPenetration"] = 55, ["CritRating"] = 65, ["ExpertiseRating"] = 75, ["HasteRating"] = 60, ["HitRating"] = 80, ["Stamina"] = 0.1, ["Strength"] = 25
+		},
+		1
+	)
+
+	-- Ranger DPS (Ranged) (Ranger, DPS (Ranged)) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothRangerDpsRangedRangerDpsRanged",
+		"[Conquest of Azeroth] Ranger - DPS (Ranged)",
+		"1eff00",
+		{
+			["Agility"] = 100, ["Ap"] = 45, ["ArmorPenetration"] = 50, ["CritRating"] = 65, ["HasteRating"] = 58, ["HitRating"] = 80, ["Intellect"] = 3, ["Stamina"] = 0.1
+		},
+		1
+	)
+
+	-- Reaper DPS (Melee) (Reaper, DPS (Melee)) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothReaperDpsMeleeReaperDpsMelee",
+		"[Conquest of Azeroth] Reaper - DPS (Melee)",
+		"1eff00",
+		{
+			["Agility"] = 35, ["Ap"] = 45, ["ArmorPenetration"] = 55, ["CritRating"] = 65, ["ExpertiseRating"] = 75, ["HasteRating"] = 60, ["HitRating"] = 80, ["Stamina"] = 0.1, ["Strength"] = 100
+		},
+		1
+	)
+
+	-- Reaper Tank (Reaper, Tank) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothReaperTankReaperTank",
+		"[Conquest of Azeroth] Reaper - Tank",
+		"1eff00",
+		{
+			["Agility"] = 45, ["Ap"] = 10, ["Armor"] = 45, ["BlockValue"] = 35, ["DefenseRating"] = 85, ["DodgeRating"] = 85, ["ExpertiseRating"] = 35, ["HitRating"] = 25, ["ParryRating"] = 80, ["Stamina"] = 100, ["Strength"] = 45
+		},
+		1
+	)
+
+	-- Runemaster DPS (Caster) (Runemaster, DPS (Caster)) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothRunemasterDpsCasterRunemasterDpsCaster",
+		"[Conquest of Azeroth] Runemaster - DPS (Caster)",
+		"1eff00",
+		{
+			["CritRating"] = 60, ["HasteRating"] = 70, ["HitRating"] = 80, ["Intellect"] = 35, ["SpellPower"] = 100, ["Spirit"] = 3, ["Stamina"] = 0.1
+		},
+		1
+	)
+
+	-- Starcaller DPS (Ranged) (Starcaller, DPS (Ranged)) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothStarcallerDpsRangedStarcallerDpsRanged",
+		"[Conquest of Azeroth] Starcaller - DPS (Ranged)",
+		"1eff00",
+		{
+			["Agility"] = 100, ["Ap"] = 45, ["ArmorPenetration"] = 50, ["CritRating"] = 65, ["HasteRating"] = 58, ["HitRating"] = 80, ["Intellect"] = 3, ["Stamina"] = 0.1
+		},
+		1
+	)
+
+	-- Starcaller Healer (Starcaller, Healer) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothStarcallerHealerStarcallerHealer",
+		"[Conquest of Azeroth] Starcaller - Healer",
+		"1eff00",
+		{
+			["CritRating"] = 45, ["HasteRating"] = 65, ["Intellect"] = 60, ["Mp5"] = 50, ["SpellPower"] = 100, ["Spirit"] = 75, ["Stamina"] = 0.1
+		},
+		1
+	)
+
+	-- Starcaller Tank (Starcaller, Tank) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothStarcallerTankStarcallerTank",
+		"[Conquest of Azeroth] Starcaller - Tank",
+		"1eff00",
+		{
+			["Agility"] = 45, ["Ap"] = 10, ["Armor"] = 45, ["BlockValue"] = 35, ["DefenseRating"] = 85, ["DodgeRating"] = 85, ["ExpertiseRating"] = 35, ["HitRating"] = 25, ["ParryRating"] = 80, ["Stamina"] = 100, ["Strength"] = 45
+		},
+		1
+	)
+
+	-- Stormbringer DPS (Caster) (Stormbringer, DPS (Caster)) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothStormbringerDpsCasterStormbringerDpsCaster",
+		"[Conquest of Azeroth] Stormbringer - DPS (Caster)",
+		"1eff00",
+		{
+			["CritRating"] = 60, ["HasteRating"] = 70, ["HitRating"] = 80, ["Intellect"] = 35, ["SpellPower"] = 100, ["Spirit"] = 3, ["Stamina"] = 0.1
+		},
+		1
+	)
+
+	-- Sun Cleric DPS (Caster) (Sun Cleric, DPS (Caster)) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothSunClericDpsCasterSunClericDpsCaster",
+		"[Conquest of Azeroth] Sun Cleric - DPS (Caster)",
+		"1eff00",
+		{
+			["CritRating"] = 60, ["HasteRating"] = 70, ["HitRating"] = 80, ["Intellect"] = 35, ["SpellPower"] = 100, ["Spirit"] = 3, ["Stamina"] = 0.1
+		},
+		1
+	)
+
+	-- Sun Cleric Healer (Sun Cleric, Healer) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothSunClericHealerSunClericHealer",
+		"[Conquest of Azeroth] Sun Cleric - Healer",
+		"1eff00",
+		{
+			["CritRating"] = 45, ["HasteRating"] = 65, ["Intellect"] = 60, ["Mp5"] = 50, ["SpellPower"] = 100, ["Spirit"] = 75, ["Stamina"] = 0.1
+		},
+		1
+	)
+
+	-- Sun Cleric Tank (Sun Cleric, Tank) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothSunClericTankSunClericTank",
+		"[Conquest of Azeroth] Sun Cleric - Tank",
+		"1eff00",
+		{
+			["Agility"] = 45, ["Ap"] = 10, ["Armor"] = 45, ["BlockValue"] = 35, ["DefenseRating"] = 85, ["DodgeRating"] = 85, ["ExpertiseRating"] = 35, ["HitRating"] = 25, ["ParryRating"] = 80, ["Stamina"] = 100, ["Strength"] = 45
+		},
+		1
+	)
+
+	-- Templar DPS (Melee) (Templar, DPS (Melee)) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothTemplarDpsMeleeTemplarDpsMelee",
+		"[Conquest of Azeroth] Templar - DPS (Melee)",
+		"1eff00",
+		{
+			["Agility"] = 35, ["Ap"] = 45, ["ArmorPenetration"] = 55, ["CritRating"] = 65, ["ExpertiseRating"] = 75, ["HasteRating"] = 60, ["HitRating"] = 80, ["Stamina"] = 0.1, ["Strength"] = 100
+		},
+		1
+	)
+
+	-- Templar Tank (Templar, Tank) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothTemplarTankTemplarTank",
+		"[Conquest of Azeroth] Templar - Tank",
+		"1eff00",
+		{
+			["Agility"] = 45, ["Ap"] = 10, ["Armor"] = 45, ["BlockValue"] = 35, ["DefenseRating"] = 85, ["DodgeRating"] = 85, ["ExpertiseRating"] = 35, ["HitRating"] = 25, ["ParryRating"] = 80, ["Stamina"] = 100, ["Strength"] = 45
+		},
+		1
+	)
+
+	-- Tinker DPS (Ranged) (Tinker, DPS (Ranged)) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothTinkerDpsRangedTinkerDpsRanged",
+		"[Conquest of Azeroth] Tinker - DPS (Ranged)",
+		"1eff00",
+		{
+			["Agility"] = 100, ["Ap"] = 45, ["ArmorPenetration"] = 50, ["CritRating"] = 65, ["HasteRating"] = 58, ["HitRating"] = 80, ["Intellect"] = 3, ["Stamina"] = 0.1
+		},
+		1
+	)
+
+	-- Tinker Healer (Tinker, Healer) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothTinkerHealerTinkerHealer",
+		"[Conquest of Azeroth] Tinker - Healer",
+		"1eff00",
+		{
+			["CritRating"] = 45, ["HasteRating"] = 65, ["Intellect"] = 60, ["Mp5"] = 50, ["SpellPower"] = 100, ["Spirit"] = 75, ["Stamina"] = 0.1
+		},
+		1
+	)
+
+	-- Venomancer DPS (Caster) (Venomancer, DPS (Caster)) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothVenomancerDpsCasterVenomancerDpsCaster",
+		"[Conquest of Azeroth] Venomancer - DPS (Caster)",
+		"1eff00",
+		{
+			["CritRating"] = 60, ["HasteRating"] = 70, ["HitRating"] = 80, ["Intellect"] = 35, ["SpellPower"] = 100, ["Spirit"] = 3, ["Stamina"] = 0.1
+		},
+		1
+	)
+
+	-- Venomancer DPS (Melee) (Venomancer, DPS (Melee)) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothVenomancerDpsMeleeVenomancerDpsMelee",
+		"[Conquest of Azeroth] Venomancer - DPS (Melee)",
+		"1eff00",
+		{
+			["Agility"] = 100, ["Ap"] = 45, ["ArmorPenetration"] = 55, ["CritRating"] = 65, ["ExpertiseRating"] = 75, ["HasteRating"] = 60, ["HitRating"] = 80, ["Stamina"] = 0.1, ["Strength"] = 25
+		},
+		1
+	)
+
+	-- Venomancer Healer (Venomancer, Healer) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothVenomancerHealerVenomancerHealer",
+		"[Conquest of Azeroth] Venomancer - Healer",
+		"1eff00",
+		{
+			["CritRating"] = 45, ["HasteRating"] = 65, ["Intellect"] = 60, ["Mp5"] = 50, ["SpellPower"] = 100, ["Spirit"] = 75, ["Stamina"] = 0.1
+		},
+		1
+	)
+
+	-- Venomancer Tank (Venomancer, Tank) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothVenomancerTankVenomancerTank",
+		"[Conquest of Azeroth] Venomancer - Tank",
+		"1eff00",
+		{
+			["Agility"] = 90, ["Ap"] = 10, ["Armor"] = 55, ["CritRating"] = 5, ["DefenseRating"] = 30, ["DodgeRating"] = 80, ["ExpertiseRating"] = 25, ["HitRating"] = 20, ["Stamina"] = 100, ["Strength"] = 15
+		},
+		1
+	)
+
+	-- Witch Doctor DPS (Caster) (Witch Doctor, DPS (Caster)) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothWitchDoctorDpsCasterWitchDoctorDpsCaster",
+		"[Conquest of Azeroth] Witch Doctor - DPS (Caster)",
+		"1eff00",
+		{
+			["CritRating"] = 60, ["HasteRating"] = 70, ["HitRating"] = 80, ["Intellect"] = 35, ["SpellPower"] = 100, ["Spirit"] = 3, ["Stamina"] = 0.1
+		},
+		1
+	)
+
+	-- Witch Doctor Healer (Witch Doctor, Healer) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothWitchDoctorHealerWitchDoctorHealer",
+		"[Conquest of Azeroth] Witch Doctor - Healer",
+		"1eff00",
+		{
+			["CritRating"] = 45, ["HasteRating"] = 65, ["Intellect"] = 60, ["Mp5"] = 50, ["SpellPower"] = 100, ["Spirit"] = 75, ["Stamina"] = 0.1
+		},
+		1
+	)
+
+	-- Witch Hunter DPS (Melee) (Witch Hunter, DPS (Melee)) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothWitchHunterDpsMeleeWitchHunterDpsMelee",
+		"[Conquest of Azeroth] Witch Hunter - DPS (Melee)",
+		"1eff00",
+		{
+			["Agility"] = 100, ["Ap"] = 45, ["ArmorPenetration"] = 55, ["CritRating"] = 65, ["ExpertiseRating"] = 75, ["HasteRating"] = 60, ["HitRating"] = 80, ["Stamina"] = 0.1, ["Strength"] = 25
+		},
+		1
+	)
+
+	-- Witch Hunter DPS (Ranged) (Witch Hunter, DPS (Ranged)) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothWitchHunterDpsRangedWitchHunterDpsRanged",
+		"[Conquest of Azeroth] Witch Hunter - DPS (Ranged)",
+		"1eff00",
+		{
+			["Agility"] = 100, ["Ap"] = 45, ["ArmorPenetration"] = 50, ["CritRating"] = 65, ["HasteRating"] = 58, ["HitRating"] = 80, ["Intellect"] = 3, ["Stamina"] = 0.1
+		},
+		1
+	)
+
+	-- Witch Hunter Tank (Witch Hunter, Tank) submitted for Conquest of Azeroth by PicoPawn (basic starter)
+	PawnAddPluginScale(
+		ScaleProviderName,
+		"ConquestOfAzerothWitchHunterTankWitchHunterTank",
+		"[Conquest of Azeroth] Witch Hunter - Tank",
+		"1eff00",
+		{
+			["Agility"] = 90, ["Ap"] = 10, ["Armor"] = 55, ["CritRating"] = 5, ["DefenseRating"] = 30, ["DodgeRating"] = 80, ["ExpertiseRating"] = 25, ["HitRating"] = 20, ["Stamina"] = 100, ["Strength"] = 15
+		},
+		1
+	)
+
 	-- Beast Mastery (Hunter, DPS (Ranged)) submitted for Bronzebeard by PicoPawn (starter example)
 	PawnAddPluginScale(
 		ScaleProviderName,

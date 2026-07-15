@@ -1,0 +1,10 @@
+{
+  "name": "Reaper DPS (Melee)",
+  "class": "Reaper",
+  "role": "DPS (Melee)",
+  "server": "Conquest of Azeroth",
+  "version": "CoA (3.3.5a)",
+  "author": "PicoPawn (basic starter)",
+  "notes": "Basic role-template starter for Conquest of Azeroth; tune and resubmit for accurate weights.",
+  "tag": "( Pawn: v1: \"Reaper DPS (Melee)\": Strength=100, HitRating=80, ExpertiseRating=75, CritRating=65, HasteRating=60, ArmorPenetration=55, Ap=45, Agility=35, Stamina=0.1, GemQualityLevel=4 )"
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Venomancer DPS (Caster)",
+  "class": "Venomancer",
+  "role": "DPS (Caster)",
+  "server": "Conquest of Azeroth",
+  "version": "CoA (3.3.5a)",
+  "author": "PicoPawn (basic starter)",
+  "notes": "Basic role-template starter for Conquest of Azeroth; tune and resubmit for accurate weights.",
+  "tag": "( Pawn: v1: \"Venomancer DPS (Caster)\": SpellPower=100, HitRating=80, HasteRating=70, CritRating=60, Intellect=35, Spirit=3, Stamina=0.1, GemQualityLevel=4 )"
+}

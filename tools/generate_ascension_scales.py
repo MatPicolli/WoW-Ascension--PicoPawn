@@ -100,10 +100,13 @@ def load_scales():
     scales = []
     if not os.path.isdir(SCALES_DIR):
         return scales
-    for fn in sorted(os.listdir(SCALES_DIR)):
-        if not fn.endswith(".json"):
-            continue
-        path = os.path.join(SCALES_DIR, fn)
+    paths = []
+    for root, _dirs, files in os.walk(SCALES_DIR):
+        for fn in files:
+            if fn.endswith(".json"):
+                paths.append(os.path.join(root, fn))
+    for path in sorted(paths):
+        fn = os.path.relpath(path, SCALES_DIR)
         with open(path, "r", encoding="utf-8") as f:
             data = json.load(f)
         for field in ("name", "class", "role", "server", "version", "tag"):
@@ -156,8 +159,17 @@ def build_lua(scales):
         if token:
             autoenable.append((internal, token))
 
-        # Display name: [Server] Class - Role : Name
-        display = "[%s] %s - %s: %s" % (s["server"], s["class"], s["role"], s["name"])
+        # Display name: [Server] Class - Role, plus ": Name" only when the name
+        # adds information beyond the class/role (avoids "Venomancer - Tank: Venomancer Tank").
+        name = str(s["name"]).strip()
+        redundant = {
+            str(s["role"]).strip().lower(),
+            ("%s %s" % (s["class"], s["role"])).strip().lower(),
+            str(s["class"]).strip().lower(),
+        }
+        display = "[%s] %s - %s" % (s["server"], s["class"], s["role"])
+        if name.lower() not in redundant:
+            display += ": " + name
         display = display.replace('"', "'")
 
         stat_items = ", ".join(

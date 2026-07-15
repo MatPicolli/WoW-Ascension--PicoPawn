@@ -1,0 +1,10 @@
+{
+  "name": "Venomancer Tank",
+  "class": "Venomancer",
+  "role": "Tank",
+  "server": "Conquest of Azeroth",
+  "version": "CoA (3.3.5a)",
+  "author": "PicoPawn (basic starter)",
+  "notes": "Basic role-template starter for Conquest of Azeroth; tune and resubmit for accurate weights.",
+  "tag": "( Pawn: v1: \"Venomancer Tank\": Stamina=100, Agility=90, DodgeRating=80, Armor=55, DefenseRating=30, ExpertiseRating=25, HitRating=20, Strength=15, Ap=10, CritRating=5, GemQualityLevel=4 )"
+}

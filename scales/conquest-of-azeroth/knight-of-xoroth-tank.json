@@ -1,0 +1,10 @@
+{
+  "name": "Knight of Xoroth Tank",
+  "class": "Knight of Xoroth",
+  "role": "Tank",
+  "server": "Conquest of Azeroth",
+  "version": "CoA (3.3.5a)",
+  "author": "PicoPawn (basic starter)",
+  "notes": "Basic role-template starter for Conquest of Azeroth; tune and resubmit for accurate weights.",
+  "tag": "( Pawn: v1: \"Knight of Xoroth Tank\": Stamina=100, DodgeRating=85, DefenseRating=85, ParryRating=80, Strength=45, Agility=45, Armor=45, BlockValue=35, ExpertiseRating=35, HitRating=25, Ap=10, GemQualityLevel=4 )"
+}
