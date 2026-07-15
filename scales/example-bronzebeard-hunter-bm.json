@@ -1,0 +1,10 @@
+{
+  "name": "Beast Mastery",
+  "class": "Hunter",
+  "role": "DPS (Ranged)",
+  "server": "Bronzebeard",
+  "version": "3.3.5a",
+  "author": "PicoPawn (starter example)",
+  "notes": "Starter example weights. Replace with community-tuned values via the scale submission form.",
+  "tag": "( Pawn: v1: \"Beast Mastery\": Agility=100, CritRating=64, HitRating=61, Ap=53, HasteRating=45, ArmorPenetration=44, Intellect=1, Stamina=0.1, IsWand=-1000000, GemQualityLevel=4 )"
+}

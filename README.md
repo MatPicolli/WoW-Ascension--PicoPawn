@@ -39,6 +39,32 @@ fundamentally compatible with the Ascension 12340 client. This port:
 Create a scale, assign stat weights (e.g. Strength = 1.0, Crit rating = 0.5), and
 tooltips will start showing scores.
 
+## Upgrade arrows & community scales
+
+When a scale is **enabled**, item tooltips show a green/red **upgrade arrow** and a
+percentage for it. Because you get one line per enabled scale, a class can show one
+arrow per role at once (e.g. *Beast Mastery / Marksmanship / Survival* for a Hunter).
+
+PicoPawn ships two sources of scales:
+
+- **Built-in per-class/spec scales** (from Pawn's Wowhead data). On class-based
+  realms (e.g. Bronzebeard) the scales for your class auto-enable, so arrows appear
+  with no setup.
+- **`Ascension` community scales** — stat weights submitted by players for specific
+  realms, classes, and roles, bundled from the [`scales/`](scales/) folder. Scales
+  matching your class auto-enable on first login; on classless realms
+  (e.g. Voljin, Rexxar) nothing is force-enabled — pick the ones you want in the
+  PicoPawn window.
+
+### Contribute a scale
+
+Tuned a good set of weights? Share it so it becomes an upgrade arrow for everyone:
+export it in-game (Scales tab → export, or `/picopawn backup`) and open the
+[**scale submission form**](https://github.com/matpicolli/wow-ascension--picopawn/issues/new?template=scale-submission.yml)
+— it asks for the class, role, server, and version. See
+[`CONTRIBUTING.md`](CONTRIBUTING.md) for the full flow (and how maintainers turn
+submissions into a bundled release via `tools/generate_ascension_scales.py`).
+
 ## Ascension notes
 
 Ascension realms differ in how classes work, which affects Pawn's *default* scales

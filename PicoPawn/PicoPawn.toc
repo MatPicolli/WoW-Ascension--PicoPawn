@@ -5,7 +5,7 @@
 ## Version: 1.3.12-ascension
 ## OptionalDeps: AtlasLoot, EQCompare, EquipCompare, MultiTips, Outfitter
 ## SavedVariables: PicoPawnCommon
-## SavedVariablesPerCharacter: PicoPawnOptions, PicoPawnWowheadScaleProviderOptions
+## SavedVariablesPerCharacter: PicoPawnOptions, PicoPawnWowheadScaleProviderOptions, PicoPawnAscensionScaleProviderOptions
 ## X-Website: https://github.com/matpicolli/wow-ascension--picopawn
 ## X-Category: Interface Enhancements
 
@@ -17,3 +17,4 @@ Pawn.lua
 PawnUI.lua
 PawnUI.xml
 Wowhead.lua
+AscensionScales.lua

@@ -1,0 +1,97 @@
+name: "Submit a Pawn scale"
+description: "Share a stat-weight scale so it can be bundled into PicoPawn and show upgrade arrows for other players."
+title: "[Scale] <class> <role> — <server>"
+labels: ["scale-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for contributing a scale! A scale is a set of stat weights that
+        PicoPawn uses to score items and show the green/red upgrade arrows.
+
+        **How to get your scale tag:** in-game, open PicoPawn (`/picopawn`),
+        select your scale, and copy its export string (the **Scales** tab has an
+        export button; `/picopawn backup` also dumps every scale as a tag).
+        It looks like:
+        `( Pawn: v1: "My Scale": Strength=100, HitRating=90, ... GemQualityLevel=4 )`
+
+        Paste that whole string in the **Scale tag** field below.
+  - type: input
+    id: name
+    attributes:
+      label: Scale name
+      description: A short name for this scale (shown in the addon).
+      placeholder: "Beast Mastery"
+    validations:
+      required: true
+  - type: input
+    id: class
+    attributes:
+      label: Class
+      description: The class this scale is for. On classless realms, use the closest role/archetype name.
+      placeholder: "Hunter"
+    validations:
+      required: true
+  - type: dropdown
+    id: role
+    attributes:
+      label: Role
+      description: The role/spec this scale targets.
+      options:
+        - "Tank"
+        - "Healer"
+        - "DPS (Melee)"
+        - "DPS (Ranged)"
+        - "DPS (Caster)"
+        - "Other"
+    validations:
+      required: true
+  - type: input
+    id: server
+    attributes:
+      label: Server / Realm
+      description: Which Ascension realm is this tuned for? (free text)
+      placeholder: "Bronzebeard"
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Client / addon version
+      description: The client or PicoPawn version you tuned this on.
+      placeholder: "3.3.5a"
+    validations:
+      required: true
+  - type: textarea
+    id: tag
+    attributes:
+      label: Scale tag
+      description: Paste the full Pawn scale export string here.
+      placeholder: '( Pawn: v1: "Beast Mastery": Agility=100, CritRating=64, HitRating=61, ... GemQualityLevel=4 )'
+      render: text
+    validations:
+      required: true
+  - type: input
+    id: author
+    attributes:
+      label: Credit (optional)
+      description: How you'd like to be credited (in-game/Discord name, etc.).
+      placeholder: "YourName"
+    validations:
+      required: false
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes / source (optional)
+      description: Anything else — reasoning, guide link, gear phase, etc.
+    validations:
+      required: false
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirmation
+      options:
+        - label: This scale is my own work, or I've credited the source above.
+          required: true
+        - label: I copied the tag directly from PicoPawn (not typed by hand).
+          required: true

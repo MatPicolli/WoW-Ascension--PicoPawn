@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: How to install & use PicoPawn
+    url: https://github.com/matpicolli/wow-ascension--picopawn#readme
+    about: Installation, usage, and how scales/upgrade arrows work.

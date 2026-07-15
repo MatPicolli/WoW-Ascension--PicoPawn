@@ -1,0 +1,10 @@
+{
+  "name": "Arms",
+  "class": "Warrior",
+  "role": "DPS (Melee)",
+  "server": "Bronzebeard",
+  "version": "3.3.5a",
+  "author": "PicoPawn (starter example)",
+  "notes": "Starter example weights. Replace with community-tuned values via the scale submission form.",
+  "tag": "( Pawn: v1: \"Arms\": Strength=100, HitRating=90, ExpertiseRating=85, CritRating=80, Agility=65, ArmorPenetration=65, HasteRating=50, Ap=45, Armor=1, Stamina=0.1, IsWand=-1000000, GemQualityLevel=4 )"
+}

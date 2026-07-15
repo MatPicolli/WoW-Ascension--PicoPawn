@@ -1,0 +1,10 @@
+{
+  "name": "Holy Heal",
+  "class": "Priest",
+  "role": "Healer",
+  "server": "Voljin",
+  "version": "3.3.5a",
+  "author": "PicoPawn (starter example)",
+  "notes": "Starter example for a classless/expanded-class realm. Class is only a label here; enable manually in-game.",
+  "tag": "( Pawn: v1: \"Holy Heal\": SpellPower=100, Spirit=88, Intellect=70, HasteRating=60, CritRating=45, Mp5=40, Stamina=0.1, GemQualityLevel=4 )"
+}
