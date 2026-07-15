@@ -295,6 +295,18 @@ function PawnInitialize()
 		end
 	end
 
+	-- Bagnon compatibility: Bagnon also replaces the default bags with its own item slot
+	-- buttons (Bagnon.ItemSlot) and never calls ContainerFrame_Update. Unlike AdiBags, Bagnon's
+	-- item buttons expose the same GetBag()/GetID() shape as Blizzard's, so a single
+	-- hooksecurefunc on the shared ItemSlot:Update() method covers every instance.
+	if LibStub then
+		local AceAddon = LibStub:GetLibrary("AceAddon-3.0", true)
+		local BagnonAddon = AceAddon and AceAddon:GetAddon("Bagnon", true)
+		if BagnonAddon and BagnonAddon.ItemSlot then
+			hooksecurefunc(BagnonAddon.ItemSlot, "Update", function(self) PawnUI_UpdateBagnonButton(self) end)
+		end
+	end
+
 end
 
 function PawnOnLogout()

@@ -116,6 +116,7 @@ function PawnUI_RefreshAllContainerUpgradeIcons()
 	end
 
 	PawnUI_RefreshAllAdiBagsButtons()
+	PawnUI_RefreshAllBagnonButtons()
 end
 
 ------------------------------------------------------------
@@ -149,6 +150,33 @@ function PawnUI_RefreshAllAdiBagsButtons()
 	for Button in pairs(PawnUI_AdiBagsButtons) do
 		if Button:IsShown() then
 			PawnUI_UpdateAdiBagsButton(Button)
+		end
+	end
+end
+
+------------------------------------------------------------
+-- Bagnon compatibility
+------------------------------------------------------------
+
+-- Item slot buttons Bagnon has updated at least once, keyed by the button itself (weak keys).
+-- Tracked so a scale-visibility/equipment refresh can revisit them without waiting for Bagnon
+-- to call Update() again on its own.
+PawnUI_BagnonButtons = PawnUI_BagnonButtons or setmetatable({}, { __mode = "k" })
+
+-- Called (via hooksecurefunc) after every Bagnon.ItemSlot:Update(). Bagnon's item slot buttons
+-- expose GetBag()/GetID() with the same meaning as Blizzard's bag buttons, so this reuses the
+-- same overlay logic as stock bags.
+function PawnUI_UpdateBagnonButton(Button)
+	if not Button or not Button.GetBag or not Button.GetID then return end
+	PawnUI_BagnonButtons[Button] = true
+	PawnUI_UpdateContainerButtonUpgradeIcon(Button, Button:GetBag(), Button:GetID())
+end
+
+function PawnUI_RefreshAllBagnonButtons()
+	local Button
+	for Button in pairs(PawnUI_BagnonButtons) do
+		if Button:IsShown() then
+			PawnUI_UpdateBagnonButton(Button)
 		end
 	end
 end

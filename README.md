@@ -56,9 +56,9 @@ bank)**, so you can spot upgrades without even hovering. The badge appears only 
 the item is an upgrade for one of your enabled scales; it updates automatically when
 you change gear or toggle which scales are enabled.
 
-If you use **AdiBags**, the bag icon works there too — AdiBags replaces the default
-bags entirely, so PicoPawn hooks into AdiBags' own button messages instead of
-Blizzard's bag frames.
+If you use **AdiBags** or **Bagnon**, the bag icon works there too — both replace the
+default bags entirely, so PicoPawn hooks into each addon's own item buttons instead
+of Blizzard's bag frames.
 
 In the PicoPawn window, the scale list's group headers (e.g. *Wowhead scales*,
 *Ascension community scales*) are **collapsible** — click a header to fold/expand
