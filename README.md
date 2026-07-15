@@ -41,9 +41,18 @@ tooltips will start showing scores.
 
 ## Upgrade arrows & community scales
 
-When a scale is **enabled**, item tooltips show a green/red **upgrade arrow** and a
-percentage for it. Because you get one line per enabled scale, a class can show one
-arrow per role at once (e.g. *Beast Mastery / Marksmanship / Survival* for a Hunter).
+When a scale is **enabled**, item tooltips show that scale's **score**, plus a green
+**`↑ +X% upgrade`** line whenever the item beats what you have equipped in that slot
+(compared against the weaker item for rings/trinkets/one-hand weapons). The upgrade
+line appears on the item's tooltip during comparison too — i.e. on the item you're
+considering, next to your equipped item's tooltip. You get one line per enabled
+scale, so a class shows one upgrade line per role at once (e.g. *Beast Mastery /
+Marksmanship / Survival* for a Hunter). Only upgrades are shown (on by default via
+the `ShowUpgrades` option); downgrades are omitted to keep tooltips clean.
+
+In the PicoPawn window, the scale list's group headers (e.g. *Wowhead scales*,
+*Ascension community scales*) are **collapsible** — click a header to fold/expand
+that group; the state is remembered.
 
 PicoPawn ships two sources of scales:
 

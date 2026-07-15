@@ -203,8 +203,10 @@ function PawnUIFrame_ScaleSelector_Refresh()
 			LastHeader = ScaleData.Header
 			PawnUIFrame_ScaleSelector_AddHeaderLine(LastHeader)
 		end
-		-- Then, list the scale.
-		PawnUIFrame_ScaleSelector_AddScaleLine(ScaleName, ScaleData.LocalizedName, ScaleData.IsVisible)
+		-- Then, list the scale, unless its group header is collapsed.
+		if not PawnUIFrame_ScaleSelector_IsHeaderCollapsed(ScaleData.Header) then
+			PawnUIFrame_ScaleSelector_AddScaleLine(ScaleName, ScaleData.LocalizedName, ScaleData.IsVisible)
+		end
 	end
 	
 	PawnUIScaleSelectorScrollContent:SetHeight(PawnUIScaleLineHeight * PawnUITotalScaleLines + PawnUIScaleSelectorPaddingBottom)
@@ -220,8 +222,29 @@ function PawnUIFrame_ScaleSelector_Refresh()
 end
 
 function PawnUIFrame_ScaleSelector_AddHeaderLine(Text)
-	local Line = PawnUIFrame_ScaleSelector_AddLineCore(Text)
-	Line:Disable()
+	-- Group headers are clickable to collapse/expand the scales beneath them.
+	local Indicator = PawnUIFrame_ScaleSelector_IsHeaderCollapsed(Text) and "+ " or "- "
+	local Line = PawnUIFrame_ScaleSelector_AddLineCore(Indicator .. Text)
+	Line:SetNormalFontObject("PawnFontBlueSmall")
+	Line.HeaderName = Text
+end
+
+-- Returns true if the named group header is currently collapsed.
+function PawnUIFrame_ScaleSelector_IsHeaderCollapsed(Header)
+	if not Header or Header == "" then return false end
+	return PicoPawnCommon.CollapsedScaleHeaders and PicoPawnCommon.CollapsedScaleHeaders[Header]
+end
+
+-- Toggles a group header collapsed/expanded and refreshes the list.
+function PawnUIFrame_ScaleSelector_ToggleHeader(Header)
+	if not Header or Header == "" then return end
+	if not PicoPawnCommon.CollapsedScaleHeaders then PicoPawnCommon.CollapsedScaleHeaders = { } end
+	if PicoPawnCommon.CollapsedScaleHeaders[Header] then
+		PicoPawnCommon.CollapsedScaleHeaders[Header] = nil
+	else
+		PicoPawnCommon.CollapsedScaleHeaders[Header] = true
+	end
+	PawnUIFrame_ScaleSelector_Refresh()
 end
 
 function PawnUIFrame_ScaleSelector_AddScaleLine(ScaleName, LocalizedName, IsActive)
@@ -248,7 +271,11 @@ function PawnUIFrame_ScaleSelector_AddLineCore(Text)
 end
 
 function PawnUIFrame_ScaleSelector_OnClick(self)
-	PawnUI_SelectScale(self.ScaleName)
+	if self.HeaderName then
+		PawnUIFrame_ScaleSelector_ToggleHeader(self.HeaderName)
+	else
+		PawnUI_SelectScale(self.ScaleName)
+	end
 end
 
 -- Selects a scale in CurrentScaleDropDown.

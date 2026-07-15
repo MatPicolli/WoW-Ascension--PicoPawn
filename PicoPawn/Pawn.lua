@@ -308,6 +308,7 @@ function PawnInitializeOptions()
 	PawnMigrateSetting("ShowSpace", false)
 	PawnMigrateSetting("ButtonPosition", PawnButtonPositionRight)
 	PawnMigrateSetting("ShowTooltipIcons", true)
+	PawnMigrateSetting("ShowUpgrades", true)
 
 	-- Now, migrate all scales from this character over to PicoPawnCommon.
 	if not PicoPawnCommon.Scales then PicoPawnCommon.Scales = {} end
@@ -997,6 +998,11 @@ function PawnUpdateTooltip(TooltipName, MethodName, Param1, ...)
 	-- Add the scale values to the tooltip.
 	if AddSpace and #Item.Values > 0 then Tooltip:AddLine(" ") AddSpace = false end
 	PawnAddValuesToTooltip(Tooltip, Item.Values)
+
+	-- Add green "+X% upgrade" lines on primary item tooltips (not the comparison shopping tooltips).
+	if TooltipName == "GameTooltip" or TooltipName == "ItemRefTooltip" or TooltipName == "AtlasLootTooltip" then
+		PawnAddUpgradesToTooltip(Tooltip, Item)
+	end
 	
 	-- If there were unrecognized values, annotate those lines.
 	local Annotated = false
@@ -1121,6 +1127,84 @@ function PawnAddValuesToTooltip(Tooltip, ItemValues, OnlyFirstValue)
 					Tooltip:AddDoubleLine(Left, Right)
 				else
 					Tooltip:AddLine(TooltipText)
+				end
+			end
+		end
+	end
+end
+
+-- Inventory slots that an item of a given equip location could replace.
+local PawnEquipLocToSlots =
+{
+	["INVTYPE_HEAD"] = { 1 },
+	["INVTYPE_NECK"] = { 2 },
+	["INVTYPE_SHOULDER"] = { 3 },
+	["INVTYPE_BODY"] = { 4 },
+	["INVTYPE_CHEST"] = { 5 },
+	["INVTYPE_ROBE"] = { 5 },
+	["INVTYPE_WAIST"] = { 6 },
+	["INVTYPE_LEGS"] = { 7 },
+	["INVTYPE_FEET"] = { 8 },
+	["INVTYPE_WRIST"] = { 9 },
+	["INVTYPE_HAND"] = { 10 },
+	["INVTYPE_FINGER"] = { 11, 12 },
+	["INVTYPE_TRINKET"] = { 13, 14 },
+	["INVTYPE_CLOAK"] = { 15 },
+	["INVTYPE_WEAPON"] = { 16, 17 },
+	["INVTYPE_2HWEAPON"] = { 16 },
+	["INVTYPE_WEAPONMAINHAND"] = { 16 },
+	["INVTYPE_WEAPONOFFHAND"] = { 17 },
+	["INVTYPE_HOLDABLE"] = { 17 },
+	["INVTYPE_SHIELD"] = { 17 },
+	["INVTYPE_RANGED"] = { 18 },
+	["INVTYPE_RANGEDRIGHT"] = { 18 },
+	["INVTYPE_THROWN"] = { 18 },
+	["INVTYPE_RELIC"] = { 18 },
+}
+
+-- The smallest upgrade percentage worth showing, to avoid rounding noise.
+local PawnUpgradeMinPercent = 0.5
+local PawnUpgradeArrowTexture = "|TInterface\\AddOns\\PicoPawn\\Textures\\UpgradeArrowBig:0|t "
+
+-- Adds a green \"+X% upgrade\" line to a tooltip for each visible scale where the item beats
+-- the weakest thing it would replace in that slot.  Only upgrades are shown.
+function PawnAddUpgradesToTooltip(Tooltip, Item)
+	if not PicoPawnCommon.ShowUpgrades then return end
+	if not Item or not Item.Link or not Item.Values or #Item.Values == 0 then return end
+
+	-- Figure out which equipped slot(s) this item would replace.
+	local _, _, _, _, _, _, _, _, InvType = GetItemInfo(Item.Link)
+	if not InvType then return end
+	local Slots = PawnEquipLocToSlots[InvType]
+	if not Slots then return end
+
+	-- Look up the currently-equipped item in each candidate slot once.
+	local EquippedItems = { }
+	local i
+	for i = 1, #Slots do
+		EquippedItems[Slots[i]] = PawnGetItemDataForInventorySlot(Slots[i], false, "player")
+	end
+
+	-- For each visible scale, compare the item's value against the weakest thing it would replace.
+	local Entry
+	for _, Entry in ipairs(Item.Values) do
+		local ScaleName, ItemValue, LocalizedName = Entry[1], Entry[2], Entry[7]
+		if ItemValue and ItemValue > 0 and PawnIsScaleVisible(ScaleName) then
+			local Baseline
+			for i = 1, #Slots do
+				local Equipped = EquippedItems[Slots[i]]
+				if Equipped then
+					local EquippedValue = PawnGetSingleValueFromItem(Equipped, ScaleName)
+					if EquippedValue and EquippedValue > 0 then
+						if not Baseline or EquippedValue < Baseline then Baseline = EquippedValue end
+					end
+				end
+			end
+			if Baseline and Baseline > 0 and ItemValue > Baseline then
+				local Percent = (ItemValue / Baseline - 1) * 100
+				if Percent >= PawnUpgradeMinPercent then
+					local Line = PawnGetScaleColor(ScaleName) .. LocalizedName .. "|r:  " .. PawnUpgradeArrowTexture .. "|cff20ff20+" .. format("%.0f", Percent) .. "% " .. PawnLocal.UpgradeTooltipWord .. "|r"
+					Tooltip:AddLine(Line)
 				end
 			end
 		end

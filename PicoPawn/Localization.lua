@@ -356,6 +356,7 @@ PawnLocal =
 {
 
 	-- General messages
+	["UpgradeTooltipWord"] = "upgrade",
 	["NeedNewerVgerCoreMessage"] = "Pawn needs a newer version of VgerCore.  Please use the version of VgerCore that came with Pawn.",
 	
 	-- Scale management dialog messages
