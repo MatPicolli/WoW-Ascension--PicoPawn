@@ -1,0 +1,19 @@
+## Interface: 30300
+## Title: PicoPawn
+## Notes: PicoPawn calculates scores for items so you can easily see which one is better for you. A port of Pawn for WoW Ascension (3.3.5a).
+## Author: Vger (original Pawn); ported to Ascension by PicoPawn
+## Version: 1.3.12-ascension
+## OptionalDeps: AtlasLoot, EQCompare, EquipCompare, MultiTips, Outfitter
+## SavedVariables: PicoPawnCommon
+## SavedVariablesPerCharacter: PicoPawnOptions, PicoPawnWowheadScaleProviderOptions
+## X-Website: https://github.com/matpicolli/wow-ascension--picopawn
+## X-Category: Interface Enhancements
+
+VgerCore\VgerCore.lua
+
+Localization.lua
+Gems.lua
+Pawn.lua
+PawnUI.lua
+PawnUI.xml
+Wowhead.lua
