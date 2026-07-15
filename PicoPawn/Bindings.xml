@@ -8,4 +8,4 @@
 	<Binding name="PAWN_COMPARE_RIGHT">
 		PawnUI_SetCompareFromHover(2)
 	</Binding>
-</Bindings>
+</Bindings>

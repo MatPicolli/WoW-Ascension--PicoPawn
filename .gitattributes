@@ -1,0 +1,9 @@
+# The WoW 3.3.5a / Ascension client parses .toc (and reads .lua/.xml) expecting
+# Windows CRLF line endings. If the .toc is committed/checked out with LF-only
+# endings, the client fails to parse it and the addon is not detected at all.
+# Mark the addon's text files as binary so git preserves the exact CRLF bytes
+# on commit, checkout, and ZIP/archive downloads (no EOL normalization).
+PicoPawn/*.toc  -text
+PicoPawn/*.lua  -text
+PicoPawn/*.xml  -text
+PicoPawn/VgerCore/*.lua  -text

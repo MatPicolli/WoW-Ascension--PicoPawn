@@ -2061,4 +2061,4 @@ function PawnUIStringDialog_TextBox_OnTextChanged()
 	else
 		PawnUIStringDialog_OKButton:Disable()
 	end
-end
+end

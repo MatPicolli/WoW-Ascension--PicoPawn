@@ -828,4 +828,4 @@ PawnRightHandRegexes =
 	{"^Mail$", "IsMail", 1, PawnMultipleStatsFixed},
 	{"^Plate$", "IsPlate", 1, PawnMultipleStatsFixed},
 	{"^Shield$", "IsShield", 1, PawnMultipleStatsFixed},
-}
+}
