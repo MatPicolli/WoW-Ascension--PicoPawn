@@ -55,6 +55,67 @@ PawnUIStats_SocketBonusBefore = 13
 
 
 ------------------------------------------------------------
+-- Bag/bank item upgrade icons
+------------------------------------------------------------
+
+-- Called (via hooksecurefunc) whenever Blizzard's ContainerFrame_Update runs, which happens for
+-- both bag and bank container frames. Overlays a small green upgrade arrow on each item button
+-- whose item is an upgrade for one of the player's enabled scales.
+function PawnUI_ContainerFrame_UpdateUpgradeIcons(Frame)
+	if not Frame or not PicoPawnCommon or not PicoPawnCommon.ShowUpgrades then return end
+	local Name = Frame:GetName()
+	local BagID = Frame:GetID()
+	if not Name or not BagID then return end
+	local NumSlots = Frame.size or (GetContainerNumSlots and GetContainerNumSlots(BagID)) or 0
+	local i
+	for i = 1, NumSlots do
+		local Button = getglobal(Name .. "Item" .. i)
+		if Button then
+			PawnUI_UpdateContainerButtonUpgradeIcon(Button, BagID, Button:GetID())
+		end
+	end
+end
+
+-- Shows or hides the upgrade arrow overlay on a single bag/bank item button.
+function PawnUI_UpdateContainerButtonUpgradeIcon(Button, BagID, SlotID)
+	local IsUpgrade = false
+	if PicoPawnCommon.ShowUpgrades and BagID and SlotID then
+		local ItemLink = GetContainerItemLink(BagID, SlotID)
+		if ItemLink then
+			IsUpgrade = PawnIsItemAnUpgrade(PawnGetItemData(ItemLink))
+		end
+	end
+
+	local Arrow = Button.PawnUpgradeArrow
+	if IsUpgrade then
+		if not Arrow then
+			Arrow = Button:CreateTexture(nil, "OVERLAY")
+			Arrow:SetTexture("Interface\\AddOns\\PicoPawn\\Textures\\UpgradeArrowBig")
+			Arrow:SetPoint("TOPLEFT", Button, "TOPLEFT", -4, 4)
+			Arrow:SetWidth(18)
+			Arrow:SetHeight(18)
+			Button.PawnUpgradeArrow = Arrow
+		end
+		Arrow:Show()
+	elseif Arrow then
+		Arrow:Hide()
+	end
+end
+
+-- Re-applies upgrade icons on every currently-open bag/bank container frame. Called after
+-- anything that could change what counts as an upgrade (scale visibility toggled, gear changed).
+function PawnUI_RefreshAllContainerUpgradeIcons()
+	local NumFrames = NUM_CONTAINER_FRAMES or 13
+	local i
+	for i = 1, NumFrames do
+		local Frame = getglobal("ContainerFrame" .. i)
+		if Frame and Frame:IsShown() and ContainerFrame_Update then
+			ContainerFrame_Update(Frame)
+		end
+	end
+end
+
+------------------------------------------------------------
 -- Inventory button
 ------------------------------------------------------------
 

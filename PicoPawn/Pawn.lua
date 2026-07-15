@@ -116,6 +116,10 @@ function PawnOnEvent(Event, arg1, ...)
 		PawnSetDefaultKeybindings()
 	elseif Event == "PLAYER_LOGOUT" then
 		PawnOnLogout()
+	elseif Event == "PLAYER_EQUIPMENT_CHANGED" then
+		-- Equipping/unequipping changes the upgrade baseline for every item in the bags.
+		PawnResetTooltips()
+		PawnUI_RefreshAllContainerUpgradeIcons()
 	end 
 end
 
@@ -178,6 +182,11 @@ function PawnInitialize()
 	hooksecurefunc(GameTooltip, "SetTradeTargetItem", function(self, ...) PawnUpdateTooltip("GameTooltip", "SetTradeTargetItem", ...) end)
 	hooksecurefunc(GameTooltip, "SetTrainerService", function(self, ...) PawnUpdateTooltip("GameTooltip", "SetTrainerService", ...) end)
 	hooksecurefunc(GameTooltip, "Hide", function(self, ...) PawnLastHoveredItem = nil end)
+
+	-- Bag/bank item slots: overlay a green upgrade arrow directly on the item icon.
+	if ContainerFrame_Update then
+		hooksecurefunc("ContainerFrame_Update", PawnUI_ContainerFrame_UpdateUpgradeIcons)
+	end
 
 	-- Ascension item-scaling compatibility: the server can rebuild the hovered item's tooltip
 	-- (adding its "Scaled item stats" note) AFTER Pawn annotates it, which wipes Pawn's lines.
@@ -627,6 +636,8 @@ function PawnResetTooltips()
 	PawnResetTooltip("ComparisonTooltip1") -- EquipCompare compatibility
 	PawnResetTooltip("ComparisonTooltip2") -- EquipCompare compatibility
 	PawnResetTooltip("AtlasLootTooltip") -- AtlasLoot compatibility
+	-- Bag/bank upgrade arrow overlays also depend on which scales are enabled.
+	if PawnUI_RefreshAllContainerUpgradeIcons then PawnUI_RefreshAllContainerUpgradeIcons() end
 end
 
 -- Attempts to reset a single tooltip, causing Pawn values to be recalculated.  Returns true if successful.
